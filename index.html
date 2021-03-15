@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>todolist</title>
+</head>
+<body>
+
+  <h1>ToDoリスト</h1>
+  <form action="">
+    <input type="radio" name="status" id="js-status" value="すべて">すべて
+    <input type="radio" name="status" id="js-status" value="すべて">作業中
+    <input type="radio" name="status" id="js-status" value="すべて">完了
+  </form>
+
+  <table id="js-addLists">
+    <tr id="js-addList">
+      <th>ID</th>
+      <th>コメント</td>
+      <th>状態</th>
+    </tr>
+
+    <!-- <tr>
+      <td></td>
+      <td></td>
+      <td><button></button></td>
+      <td><button></button></td>
+    </tr> -->
+
+  </table>
+
+  <h2>新規タスクの追加</h2>
+  <form action="">
+    <input type="text"  id="js-inputTask" name="" >
+    <input type="button" onclick="show()" value="追加">
+  </form>
+
+
+  <script src="main.js"></script>
+</body>
+</html>
