@@ -1,47 +1,49 @@
-// 【学習できる内容】
-// - 配列の操作
-// - オブジェクトの操作
+const todos =[ ]
+let index = 0;
 
-// IDカウンター
-let i = 0;
+// 追加ボタンが押下されたとき
+const show = () => {
+  const todo = {
+    id:'',
+    task: '',
+    status: '作業中',
+    delete:'削除'
+  }
 
+  // 1.入力情報を取得、テキストエリアの内容を削除する
 
-// クリックイベント
-const show = () =>{
-  // 操作するノードを取得する
-  const addList = document.getElementById('js-addList');
   const inputTask = document.getElementById('js-inputTask').value;
-  
-  // 入力したテキストエリアの内容を削除する
   const clearInputText = document.getElementById('js-inputTask').value = '';
   
-  // タスクを追加する
+  // 2.todoのtaskの値に1で取得した入力情報を追加する。
+  todo.id = index;
+  todo.task = inputTask;
+  index++;
+  
+  // 3.配列todosに2で作成したオブジェクトを追加する
+  todos.push(todo);
 
-// tr追加
-  const addLists = document.getElementById('js-addLists');
-  const addTr = document.createElement('tr');
-  addLists.appendChild(addTr);
+  // 4.配列の要素をひとつずつHTML部に表示する。
+  const getTbody = document.getElementById('js-tbody');
+  const tr = document.createElement('tr');
+  const th = document.createElement('th');
+  getTbody.appendChild(tr)
 
-  // td追加
-    // IDの追加
-    const adTdID = document.createElement('td');
-    addTr.appendChild(adTdID);
-    adTdID.innerHTML = i++;
-    
-    // コメントの追加
-    // const adTd = document.createElement('td');
-    const adTdComent = document.createElement('td');
-    addTr.appendChild(adTdComent);
-    adTdComent.innerHTML = inputTask;
+  // id
+  const tdId = document.createElement('td');
+  tr.appendChild(tdId).innerText = todo.id;
+  
+  // task
+  const tdTask = document.createElement('td');
+  tr.appendChild(tdTask).innerText = todo.task;
 
-    // 状態の追加
-    const adTdstatus = document.createElement('td');
-    addTr.appendChild(adTdstatus);
-    adTdstatus.innerHTML = '<button>作業中</button>';
-    
-    // 削除の追加
-    const adTdDelete = document.createElement('td');
-    addTr.appendChild(adTdDelete);
-    adTdDelete.innerHTML = '<button>削除</button>';
-
-} 
+  // status
+  const tdStatus = document.createElement('td');
+  const buttonStatus = document.createElement('button');
+  tr.appendChild(tdStatus).appendChild(buttonStatus).innerText = todo.status;
+  
+  // delete
+  const tdDelete = document.createElement('td');
+  const buttonDelete = document.createElement('button');
+  tr.appendChild(tdDelete).appendChild(buttonDelete).innerText = todo.delete;  
+}
