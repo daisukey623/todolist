@@ -40,6 +40,7 @@ const show = () => {
   const tdStatus = document.createElement("td");
   const buttonStatus = document.createElement("button");
   tr.appendChild(tdStatus).appendChild(buttonStatus).innerText = todo.status;
+  buttonStatus.classList.add("status");
 
   // delete
   const tdDelete = document.createElement("td");
@@ -48,8 +49,10 @@ const show = () => {
   buttonDelete.classList.add("delete");
 
   deleteButton();
+  statusButton();
 };
 
+// 削除ボタンクリック後、タスク削除
 const deleteButton = () => {
   const getDelete = document.getElementsByClassName("delete");
   for (let i = 0; i < getDelete.length; i++) {
@@ -59,7 +62,6 @@ const deleteButton = () => {
 
 const deleteClick = (e) => {
   e.preventDefault();
-  console.log("削除クリック");
 
   // クリックされた削除対象のインデックスを取得
   const deleteIndex = document.querySelectorAll(".delete");
@@ -80,4 +82,26 @@ const deleteClick = (e) => {
   }
 
   console.log(todos);
+};
+
+
+// 作業中ボタンクリック後、ステータス変更
+// 
+const statusButton = () => {
+  const getStatus = document.getElementsByClassName("status");
+  for (let i = 0; i < getStatus.length; i++) {
+    getStatus[i].addEventListener("click", statusClick, false);
+  }
+};
+
+const statusClick = (e) => {
+  e.preventDefault();
+
+  // 要素の変更（作業中 ⇆ 完了）
+  const statusTarget = e.target;
+  if (statusTarget.innerText === '作業中' ) {
+    statusTarget.innerText = '完了';
+  } else {
+    statusTarget.innerHTML = '作業中'
+  }
 };
