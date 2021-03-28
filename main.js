@@ -16,7 +16,6 @@ const show = () => {
   const inputTask = document.getElementById("js-inputTask").value;
   const clearInputText = (document.getElementById("js-inputTask").value = "");
 
-
   // 2.todoのtaskの値に1で取得した入力情報を追加する。
   todo.id = todos.length;
   todo.task = inputTask;
@@ -28,8 +27,8 @@ const show = () => {
   const getTbody = document.getElementById("js-tbody");
   const tr = document.createElement("tr");
   const th = document.createElement("th");
-  if(radioList[2].checked) {
-    getTbody.appendChild(tr).style.display ="none";
+  if (radioList[2].checked) {
+    getTbody.appendChild(tr).style.display = "none";
   } else {
     getTbody.appendChild(tr);
   }
@@ -47,7 +46,7 @@ const show = () => {
   const tdStatus = document.createElement("td");
   const buttonStatus = document.createElement("button");
   tr.appendChild(tdStatus).appendChild(buttonStatus).innerText = todo.status;
-  buttonStatus.classList.add("status","work");
+  buttonStatus.classList.add("status", "work");
 
   // delete
   const tdDelete = document.createElement("td");
@@ -109,13 +108,14 @@ const statusClick = (e) => {
   // console.log(statusTarget.textContent)
   if (statusTarget.innerText === "作業中") {
     statusTarget.innerText = "完了";
-    statusTarget.classList.add('done');
-    statusTarget.classList.remove('work');
+    statusTarget.classList.add("done");
+    statusTarget.classList.remove("work");
   } else {
     statusTarget.innerText = "作業中";
-    statusTarget.classList.add('work')
-    statusTarget.classList.remove('done');
+    statusTarget.classList.add("work");
+    statusTarget.classList.remove("done");
   }
+  radioClick();
 };
 
 const radioButton = () => {
@@ -128,54 +128,53 @@ const radioButton = () => {
 // ラジオボタンを押すと表示切り替え
 const radioClick = () => {
   const getStatus = document.getElementsByClassName("status");
-  const getClassWork = document.getElementsByClassName('work');
-  const getClassDone = document.getElementsByClassName('done');
+  const getClassWork = document.getElementsByClassName("work");
+  const getClassDone = document.getElementsByClassName("done");
 
   if (radioList[0].checked) {
-    console.log('すべてを選択中');
+    console.log("すべてを選択中");
     AllSwitch();
   } else if (radioList[1].checked) {
-    console.log('作業中を選択中');
+    console.log("作業中を選択中");
     DoneSwitch();
   } else if (radioList[2].checked) {
-    console.log('完了を選択中');
+    console.log("完了を選択中");
     WorkSwitch();
   }
-  
-}
+};
 
 // 『すべて』を選択時、該当タスクを表示
-const AllSwitch = () =>{
-  const getClassDone = document.getElementsByClassName('done');
-  const getClassWork = document.getElementsByClassName('work');
-  for(let i =0; i < getClassWork.length; i++ ) {
-   getClassWork[i].closest("tr").style.display ="table-row";
+const AllSwitch = () => {
+  const getClassDone = document.getElementsByClassName("done");
+  const getClassWork = document.getElementsByClassName("work");
+  for (let i = 0; i < getClassWork.length; i++) {
+    getClassWork[i].closest("tr").style.display = "table-row";
   }
-  for(let i =0; i < getClassDone.length; i++ ) {
-    getClassDone[i].closest("tr").style.display ="table-row";
+  for (let i = 0; i < getClassDone.length; i++) {
+    getClassDone[i].closest("tr").style.display = "table-row";
   }
-}
+};
 
-// 『作業中』を選択時、該当タスクを表示
-const WorkSwitch = () =>{
-  const getClassDone = document.getElementsByClassName('done');
-  const getClassWork = document.getElementsByClassName('work');
-  for(let i =0; i < getClassWork.length; i++ ) {
-   getClassWork[i].closest("tr").style.display ="none";
+// 『作業中』を選択時、該当タスクのみ表示
+const WorkSwitch = () => {
+  const getClassDone = document.getElementsByClassName("done");
+  const getClassWork = document.getElementsByClassName("work");
+  for (let i = 0; i < getClassWork.length; i++) {
+    getClassWork[i].closest("tr").style.display = "none";
   }
-  for(let i =0; i < getClassDone.length; i++ ) {
-    getClassDone[i].closest("tr").style.display ="table-row";
+  for (let i = 0; i < getClassDone.length; i++) {
+    getClassDone[i].closest("tr").style.display = "table-row";
   }
-}
+};
 
-// 『完了』を選択時、該当タスクを表示
-const DoneSwitch = () =>{
-  const getClassDone = document.getElementsByClassName('done');
-  const getClassWork = document.getElementsByClassName('work');
-  for(let i =0; i < getClassDone.length; i++ ) {
-   getClassDone[i].closest("tr").style.display ="none";
+// 『完了』を選択時、該当タスクのみ表示
+const DoneSwitch = () => {
+  const getClassDone = document.getElementsByClassName("done");
+  const getClassWork = document.getElementsByClassName("work");
+  for (let i = 0; i < getClassDone.length; i++) {
+    getClassDone[i].closest("tr").style.display = "none";
   }
-  for(let i =0; i < getClassWork.length; i++ ) {
-    getClassWork[i].closest("tr").style.display ="table-row";
-   }
-}
+  for (let i = 0; i < getClassWork.length; i++) {
+    getClassWork[i].closest("tr").style.display = "table-row";
+  }
+};
